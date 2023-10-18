@@ -66,7 +66,9 @@ console.table(ticTacToe)
 // Convert this string to a Date
 const assignmentDate = '1/21/2019';
 
+const regexDate = /(\d{1,2})\/(\d{1,2})\/(\d{4})/;
 
+console.log(regexDate.test(assignmentDate))
 
 
 // 8. Create a new Date instance to represent the dueDate.  
