@@ -37,7 +37,7 @@ const ticTacToe =
 // 4. After the array is created, 'O' claims the top right square.
 // Update that value.
 
-ticTacToe[0][2] = 'O'
+ticTacToe[0][2] = 'O';
 
 
 // 5. Log the grid to the console.
@@ -45,9 +45,9 @@ ticTacToe[0][2] = 'O'
 console.log(`
 ${ticTacToe[0]},
 ${ticTacToe[1]},
-${ticTacToe[2]}`)
+${ticTacToe[2]}`);
 
-console.table(ticTacToe)
+// console.table(ticTacToe);
 
 
 // 6. You are given an email as string myEmail, make sure it is in correct email format.
@@ -56,6 +56,10 @@ console.table(ticTacToe)
 // Hints:
 // - Use rubular to check a few emails: https://rubular.com/
 // - Use regexp test method https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test
+
+// RegEx expression for letters and digits only, no periods
+const regexEmail = /(^\w+)(@)(\w+)(\.)(\w+$)/;
+// const regexAllChar = /([-a-zA-Z0-9.-])(@)(\w+)(\.)(\w+$)/; // Allow periods and dash
 
 // List of emails strings for testing
 let emailStrings = [
@@ -71,10 +75,6 @@ let emailStrings = [
 	'foo@bar!baz',			// False
 ];
 
-// RegEx expression for letters and digits only, no periods
-const regexEmail = /(^\w+)(@)(\w+)(\.)(\w+$)/;
-// const regexAllChar = /([-a-zA-Z0-9.-])(@)(\w+)(\.)(\w+$)/; // Allow periods and dash
-
 // Test emails for RegEx
 function emailTest(email) {
 	for (i = 0; i < email.length; i++) {
@@ -87,7 +87,7 @@ function emailTest(email) {
 };
 
 // Test for emails
-emailTest(emailStrings)
+emailTest(emailStrings);
 
 
 // 7. You are given an assignmentDate as a string in the format "month/day/year"
@@ -98,7 +98,7 @@ const assignmentDate = '1/21/2019';
 // Create new Date from milliseconds
 const newAssignmentDate = new Date(Date.parse(assignmentDate)); // UTC
 
-console.log(`The assignmentDate in Date format is ${newAssignmentDate}.`)
+console.log(`The assignmentDate in Date format is ${newAssignmentDate}.`);
 
 
 // 8. Create a new Date instance to represent the dueDate.  
@@ -114,7 +114,7 @@ const dueDateSec = copiedDate.setDate(copiedDate.getDate() + 7);
 const dueDate = new Date(dueDateSec)
 // const dueDate = new Date(copiedDate.setDate(copiedDate.getDate() + 7));
 
-console.log(`The due date in Date format is ${dueDate}.`)
+console.log(`The due date in Date format is ${dueDate}.`);
 
 
 // 9. Use dueDate values to create an HTML time tag in format
@@ -141,12 +141,12 @@ const dueDateMonth = dueDate.getMonth(); // Starts with 0
 const dueDateDay = dueDate.getDate();
 
 // Get date in yyyy-mm-dd format (add 1 to month)
-const dueDateFormat = `${dueDateYear}-${dueDateMonth + 1}-${dueDateDay}`
+const dueDateFormat = `${dueDateYear}-${dueDateMonth + 1}-${dueDateDay}`;
 
 // Create HTML time tag
-const timeTag = `<time datetime="${dueDateFormat}">${months[dueDateMonth]} ${dueDateDay}, ${dueDateYear}</time>`
+const timeTag = `<time datetime="${dueDateFormat}">${months[dueDateMonth]} ${dueDateDay}, ${dueDateYear}</time>`;
 
 
 // 10. log this value using console.log
 
-console.log(`The HTML time tag is ${timeTag}`)
+console.log(`The HTML time tag is ${timeTag}`);
