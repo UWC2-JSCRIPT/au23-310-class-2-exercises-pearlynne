@@ -42,9 +42,11 @@ ticTacToe[0][2] = 'O'
 
 // 5. Log the grid to the console.
 
-console.log(ticTacToe[0])
-console.log(ticTacToe[1])
-console.log(ticTacToe[2])
+console.log(`
+${ticTacToe[0]},
+${ticTacToe[1]},
+${ticTacToe[2]}`)
+
 console.table(ticTacToe)
 
 
@@ -56,8 +58,36 @@ console.table(ticTacToe)
 // - Use rubular to check a few emails: https://rubular.com/
 // - Use regexp test method https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test
 
+let emailStrings = [
+	'foo@bar.baz',			// True
+	'fo_o@bar.baz',			// True
+	'foo123@bar.baz',		// True
+	'foo.foo@bar.baz', 	// False; Periods not allowed either
+	'fo o@bar.baz',			// False
+	'fo!o@bar.baz',			// False
+	'foo@bar.ba z',			// False
+	'foo@bar.b!az',			// False
+	'foo@bar.baz!',			// False
+	'foo@bar!baz',			// False
+];
+
+// For letters and digits only 
+const regexEmail = /(^\w+)(@)(\w+)(\.)(\w+$)/;
+// To allow periods
+const regexAllChar = /(^\w.+)(@)(\w+)(\.)(\w+$)/;
 
 
+function emailTest(email) {
+	for (i = 0; i < email.length; i++) {
+		if (regexEmail.test(email[i])) {
+			console.log(email[i], "is correct.");
+		} else {
+			console.log(email[i], "is incorrect.");
+		}
+	}
+};
+
+emailTest(emailStrings)
 
 
 
@@ -68,7 +98,9 @@ const assignmentDate = '1/21/2019';
 
 const regexDate = /(\d{1,2})\/(\d{1,2})\/(\d{4})/;
 
-console.log(regexDate.test(assignmentDate))
+const newDate = new Date(regexDate.test(assignmentDate))
+
+console.log(newDate)
 
 
 // 8. Create a new Date instance to represent the dueDate.  
