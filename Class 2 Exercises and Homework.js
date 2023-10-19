@@ -57,7 +57,7 @@ console.table(ticTacToe)
 // - Use rubular to check a few emails: https://rubular.com/
 // - Use regexp test method https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test
 
-// List of emails
+// List of emails strings for testing
 let emailStrings = [
 	'foo@bar.baz',			// True
 	'fo_o@bar.baz',			// True
@@ -71,11 +71,11 @@ let emailStrings = [
 	'foo@bar!baz',			// False
 ];
 
-// RegEx expression for letters and digits only 
+// RegEx expression for letters and digits only, no periods
 const regexEmail = /(^\w+)(@)(\w+)(\.)(\w+$)/;
 // const regexAllChar = /([-a-zA-Z0-9.-])(@)(\w+)(\.)(\w+$)/; // Allow periods and dash
 
-// Test for RegEx
+// Test emails for RegEx
 function emailTest(email) {
 	for (i = 0; i < email.length; i++) {
 		if (regexEmail.test(email[i])) {
@@ -98,7 +98,7 @@ const assignmentDate = '1/21/2019';
 // Create new Date from milliseconds
 const newAssignmentDate = new Date(Date.parse(assignmentDate)); // UTC
 
-console.log(newAssignmentDate)
+console.log(`The assignmentDate in Date format is ${newAssignmentDate}.`)
 
 
 // 8. Create a new Date instance to represent the dueDate.  
@@ -107,14 +107,14 @@ console.log(newAssignmentDate)
 // Shallow copy assignmentDate
 const copiedDate = new Date(Date.parse(assignmentDate));
 
-// Get due date in milliseconds
+// Get duDate in milliseconds
 const dueDateSec = copiedDate.setDate(copiedDate.getDate() + 7);
 
 // Create Date instance from due date in milliseconds
 const dueDate = new Date(dueDateSec)
 // const dueDate = new Date(copiedDate.setDate(copiedDate.getDate() + 7));
 
-console.log(dueDate)
+console.log(`The due date in Date format is ${dueDate}.`)
 
 
 // 9. Use dueDate values to create an HTML time tag in format
@@ -136,17 +136,17 @@ const months = [
 ];
 
 // Get month, date, year from dueDate
-const dueDateYear = dueDate.getFullYear(); 
+const dueDateYear = dueDate.getFullYear();
 const dueDateMonth = dueDate.getMonth(); // Starts with 0
 const dueDateDay = dueDate.getDate();
 
 // Get date in yyyy-mm-dd format (add 1 to month)
-const dueDateFormat = `${dueDateYear}-${dueDateMonth+1}-${dueDateDay}`
+const dueDateFormat = `${dueDateYear}-${dueDateMonth + 1}-${dueDateDay}`
 
-// Create HTML time tage
-const timeTag = `<time datetime="${dueDateFormat}">${months[dueDateMonth]} ${dueDateYear}, ${dueDateDay}</time>`
+// Create HTML time tag
+const timeTag = `<time datetime="${dueDateFormat}">${months[dueDateMonth]} ${dueDateDay}, ${dueDateYear}</time>`
 
 
 // 10. log this value using console.log
- 
-console.log(timeTag)
+
+console.log(`The HTML time tag is ${timeTag}`)
