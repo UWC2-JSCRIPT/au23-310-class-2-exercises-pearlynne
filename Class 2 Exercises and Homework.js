@@ -104,8 +104,6 @@ console.log(newAssignmentDate)
 // 8. Create a new Date instance to represent the dueDate.  
 // This will be exactly 7 days after the assignment date.
 
-
-
 // Shallow copy assignmentDate
 const copiedDate = new Date(Date.parse(assignmentDate));
 
@@ -137,5 +135,18 @@ const months = [
 	'December'
 ];
 
+// Get month, date, year from dueDate
+const dueDateYear = dueDate.getFullYear(); 
+const dueDateMonth = dueDate.getMonth(); // Starts with 0
+const dueDateDay = dueDate.getDate();
+
+// Get date in yyyy-mm-dd format (add 1 to month)
+const dueDateFormat = `${dueDateYear}-${dueDateMonth+1}-${dueDateDay}`
+
+// Create HTML time tage
+const timeTag = `<time datetime="${dueDateFormat}">${months[dueDateMonth]} ${dueDateYear}, ${dueDateDay}</time>`
+
 
 // 10. log this value using console.log
+ 
+console.log(timeTag)
