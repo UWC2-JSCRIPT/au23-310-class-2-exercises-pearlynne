@@ -50,7 +50,6 @@ ${ticTacToe[2]}`)
 console.table(ticTacToe)
 
 
-
 // 6. You are given an email as string myEmail, make sure it is in correct email format.
 // Should be 1 or more characters, then @ sign, then 1 or more characters, then dot, then one or more characters - no whitespace
 // i.e. foo@bar.baz
@@ -58,6 +57,7 @@ console.table(ticTacToe)
 // - Use rubular to check a few emails: https://rubular.com/
 // - Use regexp test method https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test
 
+// List of emails
 let emailStrings = [
 	'foo@bar.baz',			// True
 	'fo_o@bar.baz',			// True
@@ -71,12 +71,11 @@ let emailStrings = [
 	'foo@bar!baz',			// False
 ];
 
-// For letters and digits only 
+// RegEx expression for letters and digits only 
 const regexEmail = /(^\w+)(@)(\w+)(\.)(\w+$)/;
-// To allow periods
-const regexAllChar = /(^\w.+)(@)(\w+)(\.)(\w+$)/;
+// const regexAllChar = /([-a-zA-Z0-9.-])(@)(\w+)(\.)(\w+$)/; // Allow periods and dash
 
-
+// Test for RegEx
 function emailTest(email) {
 	for (i = 0; i < email.length; i++) {
 		if (regexEmail.test(email[i])) {
@@ -87,8 +86,8 @@ function emailTest(email) {
 	}
 };
 
+// Test for emails
 emailTest(emailStrings)
-
 
 
 // 7. You are given an assignmentDate as a string in the format "month/day/year"
@@ -96,17 +95,28 @@ emailTest(emailStrings)
 // Convert this string to a Date
 const assignmentDate = '1/21/2019';
 
-const regexDate = /(\d{1,2})\/(\d{1,2})\/(\d{4})/;
+// Create new Date from milliseconds
+const newAssignmentDate = new Date(Date.parse(assignmentDate)); // UTC
 
-const newDate = new Date(regexDate.test(assignmentDate))
-
-console.log(newDate)
+console.log(newAssignmentDate)
 
 
 // 8. Create a new Date instance to represent the dueDate.  
 // This will be exactly 7 days after the assignment date.
 
 
+
+// Shallow copy assignmentDate
+const copiedDate = new Date(Date.parse(assignmentDate));
+
+// Get due date in milliseconds
+const dueDateSec = copiedDate.setDate(copiedDate.getDate() + 7);
+
+// Create Date instance from due date in milliseconds
+const dueDate = new Date(dueDateSec)
+// const dueDate = new Date(copiedDate.setDate(copiedDate.getDate() + 7));
+
+console.log(dueDate)
 
 
 // 9. Use dueDate values to create an HTML time tag in format
