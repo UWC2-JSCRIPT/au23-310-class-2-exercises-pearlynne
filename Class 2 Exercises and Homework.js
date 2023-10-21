@@ -140,13 +140,18 @@ const dueDateYear = dueDate.getFullYear();
 const dueDateMonth = dueDate.getMonth(); // Starts with 0
 const dueDateDay = dueDate.getDate();
 
-// Get date in yyyy-mm-dd format (add 1 to month)
-const dueDateFormat = `${dueDateYear}-${dueDateMonth + 1}-${dueDateDay}`;
+// Get date in yyyy-mm-dd format (add 1 to month) with leading zeroes
+let dueDateFormat = '';
 
-// Create HTML time tag
+if (dueDateMonth >= 10) {
+	dueDateFormat = `${dueDateYear}-${dueDateMonth + 1}-${dueDateDay}`;
+} else {
+	dueDateFormat = `${dueDateYear}-0${dueDateMonth + 1}-${dueDateDay}`;
+};
+
+// Create HTML time tag for dueDate
 const timeTag = `<time datetime="${dueDateFormat}">${months[dueDateMonth]} ${dueDateDay}, ${dueDateYear}</time>`;
-
 
 // 10. log this value using console.log
 
-console.log(`The HTML time tag is ${timeTag}`);
+console.log(`The HTML time tag for dueDate is ${timeTag}`);
